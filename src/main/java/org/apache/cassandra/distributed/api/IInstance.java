@@ -61,6 +61,12 @@ public interface IInstance extends IIsolatedExecutor
         return nodetoolResult(true, commandAndArgs);
     }
 
+    NodeToolResultsWithOutput nodeToolResultWithOutput(boolean withNotifications, String... commandAndArgs);
+
+    default NodeToolResultsWithOutput nodeToolResultWithOutput(String... commandAndArgs) {
+        return nodeToolResultWithOutput(true, commandAndArgs);
+    }
+
     default int nodetool(String... commandAndArgs)
     {
         return nodetoolResult(commandAndArgs).getRc();
